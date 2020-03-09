@@ -39,6 +39,7 @@
 			<li><a href="{{ route('courts.index') }}">Court List </a></li>
 			<li><a href="{{ route('courts.create') }}">New Court </a></li>
 		</ul>
+		@imclude('layout.navAuth')
 		
 	<div id="page-content-wrapper"> 
             <div class="container-fluid"> 

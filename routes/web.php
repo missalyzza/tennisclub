@@ -31,5 +31,9 @@ Route::resource('courts', 'courtController');
 Route::resource('bookings', 'bookingController');
 Route::get('/calendar/display','CalendarController@display')->name('calendar.display');
 Route::get('/calendar/json','CalendarController@json')->name('calendar.json');
+Auth::routes();
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/home','memberController@index')->name('home');
+Route::get('/loggedInMember','memberController@getLoggedInMemberDetails');
 
 ?>
