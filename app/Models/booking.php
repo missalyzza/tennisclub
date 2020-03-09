@@ -75,4 +75,25 @@ class booking extends Model
     {
         return $this->belongsTo(\App\Models\Court::class, 'courtid');
     }
+	public static function boot()
+	{
+		parent::boot();
+		self::saving(function($model)
+		{
+			//figure out who the logged in user is
+			$loggedInUser = Auth::user();
+			//retrieve the costPerHour based on members of that type
+			$costPerHour = $loggedInUser->member->membershiptype->courthourlyfee;
+			//get datetime objects for the starttime and endtime - calculate the interval between them
+			$startTime = \DateTime::createFromFormat("H:i",$model->starttime);
+			$endTime = \DateTime::createFromFormat("H:i",$model->endtime);
+			$interval = $endTime->diff($startTime);
+			//add up the number of hours, minutes and seconds - express this as a decimal of hours
+			//which is rounded to 2 decimal places
+			$totalHours = round($interval->s / 3600 + $interval->i / 60 + $interval->h, 2);
+			//set the booking fee to be the cost per hour times the totalHours(decimal)
+			$model->fee = $costPerHour * $totalHours;    
+		});
+	}
 }
+?>
