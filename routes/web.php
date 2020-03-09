@@ -37,3 +37,5 @@ Route::get('/home','memberController@index')->name('home');
 Route::get('/loggedInMember','memberController@getLoggedInMemberDetails');
 
 ?>
+
+Route::resource('membershiptypes', 'membershiptypeController');

@@ -6,6 +6,7 @@
         <th>Surname</th>
         <th>Membertype</th>
         <th>Dateofbirth</th>
+        <th>Userid</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
             <td>{{ $member->surname }}</td>
             <td>{{ $member->membertype }}</td>
             <td>{{ $member->dateofbirth }}</td>
+            <td>{{ $member->userid }}</td>
                 <td>
                     {!! Form::open(['route' => ['members.destroy', $member->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

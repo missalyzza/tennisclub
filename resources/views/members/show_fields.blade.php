@@ -22,3 +22,9 @@
     <p>{{ $member->dateofbirth }}</p>
 </div>
 
+<!-- Userid Field -->
+<div class="form-group">
+    {!! Form::label('userid', 'Userid:') !!}
+    <p>{{ $member->userid }}</p>
+</div>
+
