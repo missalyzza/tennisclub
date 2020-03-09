@@ -25,15 +25,10 @@
     {!! Form::text('endtime', null, ['class' => 'form-control']) !!}
 </div>
 
+
 <!-- Memberid Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('memberid', 'Memberid:') !!}
-	<select name="memberid" class="form-control">
-		@foreach ($members as $member)
-			<option value="{{$member->id}}">{{$member}}</option>
-		@endforeach
-	</select>
-</div>
+<input type="hidden" name="memberid" value="{{Auth::user()->member->id}}">
+
 
 <!-- Courtid Field -->
 <div class="form-group col-sm-6">
