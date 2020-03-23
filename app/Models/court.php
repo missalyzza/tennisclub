@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Model as Model;
 /**
  * Class court
  * @package App\Models
- * @version February 17, 2020, 2:43 pm UTC
+ * @version March 23, 2020, 4:00 pm UTC
  *
  * @property \Illuminate\Database\Eloquent\Collection bookings
+ * @property \Illuminate\Database\Eloquent\Collection courtratings
  * @property string surface
  * @property boolean floodlights
  * @property boolean indoor
@@ -59,13 +60,12 @@ class court extends Model
     {
         return $this->hasMany(\App\Models\Booking::class, 'courtid');
     }
-	public function __toString()
-	{
-		if ($this->floodlights){
-			return $this->id . " " . $this->surface . " " . "has floodlights";
-		}
-		else {
-			return $this->id . " " . $this->surface . " " . "has no floodlights";
-		}
-	}
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function courtratings()
+    {
+        return $this->hasMany(\App\Models\Courtrating::class, 'courtid');
+    }
 }

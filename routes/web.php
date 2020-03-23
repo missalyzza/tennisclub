@@ -35,7 +35,12 @@ Auth::routes();
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/home','memberController@index')->name('home');
 Route::get('/loggedInMember','memberController@getLoggedInMemberDetails');
+Route::resource('membershiptypes', 'membershiptypeController');
+
+Route::resource('courtratings', 'courtratingController');
+Route::get('/courtratings/ratecourt/{court}','courtratingController@ratecourt')->name('courtratings.ratecourt');
 
 ?>
 
-Route::resource('membershiptypes', 'membershiptypeController');
+
+
