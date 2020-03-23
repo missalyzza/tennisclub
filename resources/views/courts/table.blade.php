@@ -17,8 +17,9 @@
             <td>{{ $court->floodlights }}</td>
             <td>{{ $court->indoor }}</td>
 			<td>{!! round($court->courtratings->avg('rating'),2); !!}</td> 
-			<td><input id="fieldRating" name="rating" value="{!! round($court->courtratings->avg('rating'),2); !!}" type="text" class="rating rating-loading" data-min=0 data-max=5 data-step=1 data-size="sm" data-display-only="true"> </td>
-
+			<td><a href="{{ route('courtratings.showcourtratings', [$court->id] )}}">
+				<input id="fieldRating" name="rating" value="{!! round($court->courtratings->avg('rating'),2); !!}" type="text" class="rating rating-loading" data-min=0 data-max=5 data-step=1 data-size="sm" data-display-only="true"> </td>
+				</a>
 
                 <td>
                     {!! Form::open(['route' => ['courts.destroy', $court->id], 'method' => 'delete']) !!}

@@ -40,6 +40,9 @@ Route::resource('membershiptypes', 'membershiptypeController');
 Route::resource('courtratings', 'courtratingController');
 Route::get('/courtratings/ratecourt/{court}','courtratingController@ratecourt')->name('courtratings.ratecourt');
 
+Route::get('/courtratings/court/{court}','courtratingController@showcourtratings')->name('courtratings.showcourtratings');
+
+
 ?>
 
 
